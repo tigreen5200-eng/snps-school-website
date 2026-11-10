@@ -828,3 +828,25 @@
 </script>
 </body>
 </html>
+<script>
+async function loadSchoolData() {
+  try {
+    const base = "./data/";
+
+    const [school, notices, staff, timetable] = await Promise.all([
+      fetch(base + "school.json").then(r => r.json()),
+      fetch(base + "notices.json").then(r => r.json()),
+      fetch(base + "staff.json").then(r => r.json()),
+      fetch(base + "timetable.json").then(r => r.json())
+    ]);
+
+    console.log("School data loaded:", {
+      school, notices, staff, timetable
+    });
+  } catch (error) {
+    console.error("Could not load school data:", error);
+  }
+}
+
+loadSchoolData();
+</script>
