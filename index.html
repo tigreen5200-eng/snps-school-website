@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard National Public School | Dursuma, Manigam, J&K</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #1a3c6e;
+            --primary-light: #2a5298;
+            --accent: #e8a838;
+            --accent-dark: #d4922a;
+            --light: #f4f7fb;
+            --white: #ffffff;
+            --dark: #1a1a2e;
+            --gray: #6b7280;
+            --gray-light: #e5e7eb;
+            --radius: 10px;
+            --shadow: 0 4px 20px rgba(26,60,110,0.12);
+            --transition: 0.3s ease;
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--dark); line-height: 1.6; background: var(--white); }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* ─── TOP BAR ─── */
+        .topbar {
+            background: var(--primary);
+            color: rgba(255,255,255,0.85);
+            font-size: 0.85rem;
+            padding: 8px 0;
+        }
+        .topbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .topbar a { color: rgba(255,255,255,0.85); transition: color var(--transition); }
+        .topbar a:hover { color: var(--accent); }
+        .topbar-inner { display: flex; gap: 20px; flex-wrap: wrap; }
+        .topbar-item { display: flex; align-items: center; gap: 6px; }
+
+        /* ─── CONTAINER ─── */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* ─── HEADER / NAV ─── */
+        header {
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 72px;
+        }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo-icon {
+            width: 48px; height: 48px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 1.1rem;
+            border: 2px solid var(--accent);
+            flex-shrink: 0;
+        }
+        .logo-text h1 { font-size: 1.15rem; color: var(--primary); line-height: 1.2; font-weight: 700; }
+        .logo-text span { font-size: 0.7rem; color: var(--gray); letter-spacing: 1.5px; text-transform: uppercase; }
+
+        .nav-links { display: flex; gap: 4px; align-items: center; }
+        .nav-links a {
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--dark);
+            transition: all var(--transition);
+        }
+        .nav-links a:hover, .nav-links a.active { background: var(--light); color: var(--primary); }
+        .nav-links .btn-admission {
+            background: var(--accent);
+            color: var(--white) !important;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-left: 8px;
+        }
+        .nav-links .btn-admission:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            border: none;
+            background: none;
+        }
+        .hamburger span {
+            width: 24px; height: 2.5px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: all var(--transition);
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ─── HERO ─── */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 80px 0 90px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -20%;
+            width: 600px; height: 600px;
+            background: rgba(232,168,56,0.1);
+            border-radius: 50%;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%; left: -10%;
+            width: 400px; height: 400px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+        .hero .container { position: relative; z-index: 1; }
+        .hero-content { max-width: 680px; }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(232,168,56,0.2);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(232,168,56,0.3);
+        }
+        .hero h2 { font-size: 3rem; font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
+        .hero h2 span { color: var(--accent); }
+        .hero p { font-size: 1.15rem; color: rgba(255,255,255,0.85); margin-bottom: 32px; max-width: 540px; }
+        .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 14px 28px; border-radius: 50px;
+            font-size: 0.95rem; font-weight: 600;
+            transition: all var(--transition); cursor: pointer; border: none;
+        }
+        .btn-primary { background: var(--accent); color: var(--white); }
+        .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(232,168,56,0.35); }
+        .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.4); }
+        .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+        .stat h3 { font-size: 2rem; font-weight: 800; color: var(--accent); }
+        .stat p { font-size: 0.85rem; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* ─── SECTIONS ─── */
+        section { padding: 80px 0; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-label {
+            display: inline-block;
+            color: var(--accent-dark);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .section-header h2 { font-size: 2.2rem; color: var(--primary); font-weight: 800; margin-bottom: 14px; }
+        .section-header p { color: var(--gray); max-width: 600px; margin: 0 auto; font-size: 1.05rem; }
+        .bg-light { background: var(--light); }
+
+        /* ─── ABOUT ─── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-image {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .about-image-text {
+            color: rgba(255,255,255,0.9);
+            text-align: center;
+            z-index: 1;
+        }
+        .about-image-text .icon { font-size: 4rem; margin-bottom: 12px; }
+        .about-image-text h3 { font-size: 1.5rem; color: var(--white); }
+        .about-image-text p { color: rgba(255,255,255,0.7); margin-top: 6px; }
+        .about-image::before {
+            content: '';
+            position: absolute;
+            width: 200px; height: 200px;
+            background: var(--accent);
+            opacity: 0.1;
+            border-radius: 50%;
+            top: -40px; right: -40px;
+        }
+        .about-content h2 { font-size: 2rem; color: var(--primary); margin-bottom: 18px; font-weight: 800; }
+        .about-content > p { color: var(--gray); margin-bottom: 24px; font-size: 1.02rem; }
+        .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+        .about-feature {
+            display: flex; align-items: flex-start; gap: 10px;
+            padding: 14px; background: var(--light); border-radius: var(--radius);
+        }
+        .about-feature .check {
+            width: 22px; height: 22px; background: var(--accent);
+            border-radius: 50%; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--white); font-size: 0.7rem; font-weight: 700;
+            margin-top: 2px;
+        }
+        .about-feature span { font-size: 0.9rem; font-weight: 600; color: var(--dark); }
+
+        /* ─── ACADEMICS ─── */
+        .academics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+        .academic-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+            border-top: 4px solid transparent;
+        }
+        .academic-card:hover { transform: translateY(-6px); border-top-color: var(--accent); }
+        .academic-icon {
+            width: 56px; height: 56px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 18px;
+        }
+        .academic-card h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 10px; font-weight: 700; }
+        .academic-card p { color: var(--gray); font-size: 0.92rem; }
+
+        /* ─── ADMISSIONS ─── */
+        .admissions-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .admission-info h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 16px; }
+        .admission-info > p { color: var(--gray); margin-bottom: 24px; }
+        .step-list { display: flex; flex-direction: column; gap: 18px; }
+        .step {
+            display: flex; gap: 16px; align-items: flex-start;
+            padding: 18px; background: var(--white);
+            border-radius: var(--radius); box-shadow: var(--shadow);
+        }
+        .step-num {
+            width: 36px; height: 36px;
+            background: var(--accent); color: var(--white);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.9rem; flex-shrink: 0;
+        }
+        .step-text h4 { font-size: 1rem; color: var(--dark); margin-bottom: 4px; }
+        .step-text p { font-size: 0.85rem; color: var(--gray); }
+        .admission-cta {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius);
+            padding: 40px;
+            color: var(--white);
+        }
+        .admission-cta h3 { font-size: 1.5rem; margin-bottom: 14px; }
+        .admission-cta p { color: rgba(255,255,255,0.8); margin-bottom: 24px; }
+        .admission-cta .btn-primary { background: var(--white); color: var(--primary); }
+        .admission-cta .btn-primary:hover { background: var(--accent); color: var(--white); }
+        .cta-contact { margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; }
+        .cta-contact p { margin-bottom: 4px; }
+
+        /* ─── FACILITIES ─── */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+        .facility-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+        }
+        .facility-card:hover { transform: translateY(-4px); border-bottom: 3px solid var(--accent); }
+        .facility-icon {
+            font-size: 2.2rem;
+            margin-bottom: 14px;
+            display: block;
+        }
+        .facility-card h4 { font-size: 0.95rem; color: var(--primary); font-weight: 700; }
+        .facility-card p { font-size: 0.8rem; color: var(--gray); margin-top: 6px; }
+
+        /* ─── CONTACT ─── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .contact-info-cards { display: flex; flex-direction: column; gap: 18px; }
+        .contact-card {
+            display: flex; gap: 16px; align-items: flex-start;
+            padding: 22px; background: var(--white);
+            border-radius: var(--radius); box-shadow: var(--shadow);
+            transition: all var(--transition);
+        }
+        .contact-card:hover { transform: translateX(6px); }
+        .contact-icon {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; flex-shrink: 0;
+        }
+        .contact-details h4 { font-size: 1rem; color: var(--primary); margin-bottom: 4px; }
+        .contact-details p, .contact-details a { font-size: 0.9rem; color: var(--gray); }
+        .contact-details a:hover { color: var(--accent-dark); }
+        .map-placeholder {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius);
+            min-height: 300px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            color: var(--white); text-align: center;
+            padding: 40px;
+        }
+        .map-placeholder .icon { font-size: 3rem; margin-bottom: 14px; }
+        .map-placeholder h3 { font-size: 1.3rem; margin-bottom: 8px; }
+        .map-placeholder p { color: rgba(255,255,255,0.7); font-size: 0.95rem; }
+        .map-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            margin-top: 18px; padding: 10px 22px;
+            background: var(--accent); color: var(--white);
+            border-radius: 50px; font-weight: 600; font-size: 0.9rem;
+            transition: all var(--transition);
+        }
+        .map-link:hover { background: var(--accent-dark); transform: translateY(-2px); }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+            padding: 50px 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+        .footer-about .logo { margin-bottom: 16px; }
+        .footer-about .logo-icon { background: var(--primary-light); }
+        .footer-about .logo-text h1 { color: var(--white); }
+        .footer-about .logo-text span { color: rgba(255,255,255,0.5); }
+        .footer-about > p { font-size: 0.9rem; line-height: 1.7; }
+        footer h4 { color: var(--white); font-size: 1rem; margin-bottom: 18px; font-weight: 700; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { font-size: 0.9rem; transition: color var(--transition); }
+        .footer-links a:hover { color: var(--accent); }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* ─── MOBILE NAV ─── */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 72px; left: 0; right: 0; bottom: 0;
+            background: var(--white);
+            z-index: 999;
+            padding: 20px;
+            flex-direction: column;
+            gap: 6px;
+            overflow-y: auto;
+        }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a {
+            padding: 14px 18px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--dark);
+            transition: all var(--transition);
+        }
+        .mobile-nav a:hover { background: var(--light); color: var(--primary); }
+        .mobile-nav .btn-admission {
+            background: var(--accent);
+            color: var(--white);
+            text-align: center;
+            border-radius: 50px;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 992px) {
+            .about-grid, .admissions-wrapper, .contact-grid { grid-template-columns: 1fr; }
+            .about-image { height: 280px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .hero { padding: 50px 0 60px; }
+            .hero h2 { font-size: 2rem; }
+            .hero-stats { gap: 24px; flex-wrap: wrap; }
+            .stat h3 { font-size: 1.5rem; }
+            section { padding: 50px 0; }
+            .section-header h2 { font-size: 1.7rem; }
+            .about-features { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .topbar { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 { font-size: 1.65rem; }
+            .hero-buttons { flex-direction: column; }
+            .hero-buttons .btn { text-align: center; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+    <div class="container">
+        <div class="topbar-inner">
+            <div class="topbar-item">&#9742; <a href="tel:+919419630397">+91 9419630397</a></div>
+            <div class="topbar-item">&#9993; <a href="mailto:Standardnational98@gmail.com">Standardnational98@gmail.com</a></div>
+        </div>
+        <div class="topbar-inner">
+            <div class="topbar-item">&#128205; Dursuma, Manigam, Jammu &amp; Kashmir, India</div>
+        </div>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header>
+    <div class="nav-wrapper">
+        <a href="#" class="logo">
+            <div class="logo-icon">SN</div>
+            <div class="logo-text">
+                <h1>Standard National<br>Public School</h1>
+                <span>Est. &#8212; Jammu &amp; Kashmir</span>
+            </div>
+        </a>
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#academics">Academics</a>
+            <a href="#facilities">Facilities</a>
+            <a href="#contact">Contact</a>
+            <a href="#admissions" class="btn-admission">Admissions Open</a>
+        </nav>
+        <button class="hamburger" id="menuBtn" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav">
+    <a href="#home" onclick="closeMenu()">Home</a>
+    <a href="#about" onclick="closeMenu()">About Us</a>
+    <a href="#academics" onclick="closeMenu()">Academics</a>
+    <a href="#admissions" onclick="closeMenu()">Admissions</a>
+    <a href="#facilities" onclick="closeMenu()">Facilities</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+    <a href="#admissions" class="btn-admission" onclick="closeMenu()">Apply Now &#8594;</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-badge">&#9733; Admissions Open 2025-26</div>
+            <h2>Building Tomorrow's <span>Leaders</span> Today</h2>
+            <p>Standard National Public School in Dursuma, Manigam — nurturing young minds with quality education, strong values, and a commitment to excellence in the heart of Jammu &amp; Kashmir.</p>
+            <div class="hero-buttons">
+                <a href="#admissions" class="btn btn-primary">Start Admission &#8594;</a>
+                <a href="#about" class="btn btn-outline">Learn More</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><h3>K-12</h3><p>Classes</p></div>
+                <div class="stat"><h3>Expert</h3><p>Teachers</p></div>
+                <div class="stat"><h3>Happy</h3><p>Students</p></div>
+                <div class="stat"><h3>&gt;95%</h3><p>Pass Rate</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-image">
+                <div class="about-image-text">
+                    <div class="icon">&#127891;</div>
+                    <h3>Excellence in Education</h3>
+                    <p>Dursuma, Manigam — Jammu &amp; Kashmir</p>
+                </div>
+            </div>
+            <div class="about-content">
+                <div class="section-label">About Us</div>
+                <h2>Empowering Students Through Knowledge &amp; Values</h2>
+                <p>Standard National Public School is committed to providing a holistic learning environment where every child can thrive. Our dedicated faculty, modern teaching methods, and value-based education prepare students to face the challenges of tomorrow with confidence and integrity.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="check">&#10003;</div>
+                        <span>Qualified &amp; Dedicated Teachers</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="check">&#10003;</div>
+                        <span>Modern Teaching Methodology</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="check">&#10003;</div>
+                        <span>Value-Based Education</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="check">&#10003;</div>
+                        <span>Safe &amp; Nurturing Environment</span>
+                    </div>
+                </div>
+                <a href="#contact" class="btn btn-primary">Get In Touch &#8594;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ACADEMICS -->
+<section class="bg-light" id="academics">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Academics</div>
+            <h2>Our Academic Programs</h2>
+            <p>A comprehensive curriculum designed to inspire curiosity, build strong foundations, and encourage creative thinking at every level.</p>
+        </div>
+        <div class="academics-grid">
+            <div class="academic-card">
+                <div class="academic-icon">&#127918;</div>
+                <h3>Pre-Primary Wing</h3>
+                <p>A playful, engaging introduction to learning for our youngest students through activity-based education and foundational skill-building.</p>
+            </div>
+            <div class="academic-card">
+                <div class="academic-icon">&#128218;</div>
+                <h3>Primary Section</h3>
+                <p>Strong academic grounding in English, Mathematics, EVS, and Hindi with interactive lessons and hands-on learning experiences.</p>
+            </div>
+            <div class="academic-card">
+                <div class="academic-icon">&#128202;</div>
+                <h3>Middle School</h3>
+                <p>Expanding knowledge across sciences, social studies, and languages while developing critical thinking and problem-solving skills.</p>
+            </div>
+            <div class="academic-card">
+                <div class="academic-icon">&#127942;</div>
+                <h3>Secondary School</h3>
+                <p>Rigorous preparation for board examinations with focused instruction, regular assessments, and personalized academic support.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ADMISSIONS -->
+<section id="admissions">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Admissions</div>
+            <h2>Admissions 2025-26 Now Open</h2>
+            <p>Join the SNPS family! Follow our simple admission process to give your child the best start in their educational journey.</p>
+        </div>
+        <div class="admissions-wrapper">
+            <div class="admission-info">
+                <h3>How to Apply</h3>
+                <p>We welcome students from all backgrounds. Our admission process is straightforward and student-friendly.</p>
+                <div class="step-list">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-text">
+                            <h4>Contact Us</h4>
+                            <p>Reach out via phone or visit the school campus during working hours.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-text">
+                            <h4>Fill Application Form</h4>
+                            <p>Complete the admission form with student details and document requirements.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-text">
+                            <h4>Interaction &amp; Enrollment</h4>
+                            <p>A brief interaction session followed by enrollment confirmation and fee payment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="admission-cta">
+                <h3>Ready to Enroll?</h3>
+                <p>Limited seats available for the upcoming academic session. Secure your child's future today!</p>
+                <a href="tel:+919419630397" class="btn btn-primary">Call Now: 9419630397</a>
+                <div class="cta-contact">
+                    <p><strong>Email:</strong> Standardnational98@gmail.com</p>
+                    <p><strong>Visit:</strong> Dursuma, Manigam, J&amp;K, India</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FACILITIES -->
+<section class="bg-light" id="facilities">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Facilities</div>
+            <h2>Our School Facilities</h2>
+            <p>We provide a well-equipped campus with everything students need for a complete learning experience.</p>
+        </div>
+        <div class="facilities-grid">
+            <div class="facility-card">
+                <span class="facility-icon">&#128187;</span>
+                <h4>Smart Classrooms</h4>
+                <p>Technology-enabled learning spaces</p>
+            </div>
+            <div class="facility-card">
+                <span class="facility-icon">&#128218;</span>
+                <h4>Library</h4>
+                <p>Rich collection of books &amp; resources</p>
+            </div>
+            <div class="facility-card">
+                <span class="facility-icon">&#128170;</span>
+                <h4>Power Backup</h4>
+                <p>Uninterrupted electricity supply</p>
+            </div>
+            <div class="facility-card">
+                <span class="facility-icon">&#127963;</span>
+                <h4>Sports Ground</h4>
+                <p>Open space for physical activities</p>
+            </div>
+            <div class="facility-card">
+                <span class="facility-icon">&#128663;</span>
+                <h4>Transport</h4>
+                <p>Safe school bus service available</p>
+            </div>
+            <div class="facility-card">
+                <span class="facility-icon">&#128722;</span>
+                <h4>Playground</h4>
+                <p>Games area for recreation &amp; fun</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Contact</div>
+            <h2>Get In Touch With Us</h2>
+            <p>We'd love to hear from you. Reach out anytime — we're here to help!</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info-cards">
+                <div class="contact-card">
+                    <div class="contact-icon">&#128205;</div>
+                    <div class="contact-details">
+                        <h4>Our Location</h4>
+                        <p>Dursuma, Manigam, Jammu &amp; Kashmir,<br>India</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">&#9742;</div>
+                    <div class="contact-details">
+                        <h4>Phone Number</h4>
+                        <a href="tel:+919419630397">+91 9419630397</a>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">&#9993;</div>
+                    <div class="contact-details">
+                        <h4>Email Address</h4>
+                        <a href="mailto:Standardnational98@gmail.com">Standardnational98@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">&#128336;</div>
+                    <div class="contact-details">
+                        <h4>Office Hours</h4>
+                        <p>Monday – Saturday: 9:00 AM – 3:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-placeholder">
+                <div class="icon">&#127757;</div>
+                <h3>Find Us on the Map</h3>
+                <p>Dursuma, Manigam<br>Jammu &amp; Kashmir, India</p>
+                <a href="https://maps.google.com/?q=Dursuma+Manigam+Jammu+Kashmir+India" target="_blank" rel="noopener" class="map-link">
+                    Open in Google Maps &#8599;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="#" class="logo">
+                    <div class="logo-icon">SN</div>
+                    <div class="logo-text">
+                        <h1>Standard National<br>Public School</h1>
+                        <span>Dursuma, Manigam, J&amp;K</span>
+                    </div>
+                </a>
+                <p>Nurturing young minds with quality education, strong moral values, and a passion for lifelong learning since our establishment in the beautiful land of Jammu &amp; Kashmir.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#academics">Academics</a></li>
+                    <li><a href="#admissions">Admissions</a></li>
+                    <li><a href="#facilities">Facilities</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact Info</h4>
+                <ul class="footer-links">
+                    <li>&#128205; Dursuma, Manigam, J&amp;K</li>
+                    <li><a href="tel:+919419630397">&#9742; +91 9419630397</a></li>
+                    <li><a href="mailto:Standardnational98@gmail.com">&#9993; Standardnational98@gmail.com</a></li>
+                    <li>&#128336; Mon-Sat: 9AM - 3PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Standard National Public School. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    menuBtn.addEventListener('click', () => {
+        menuBtn.classList.toggle('active');
+        mobileNav.classList.toggle('open');
+    });
+
+    function closeMenu() {
+        menuBtn.classList.remove('active');
+        mobileNav.classList.remove('open');
+    }
+
+    // Close mobile nav on resize to desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) closeMenu();
+    });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a:not(.btn-admission)');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            if (scrollY >= sectionTop) current = section.getAttribute('id');
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+        });
+    });
+</script>
+</body>
+</html>
