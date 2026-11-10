@@ -1,0 +1,98 @@
+media:
+  input: media
+  output: /media
+
+content:
+  - name: school
+    label: School Details
+    type: file
+    path: data/school.json
+    format: json
+    fields:
+      - name: schoolName
+        label: School Name
+        type: string
+      - name: location
+        label: Location
+        type: string
+      - name: phone
+        label: Phone
+        type: string
+      - name: email
+        label: Email
+        type: string
+      - name: session
+        label: Academic Session
+        type: string
+      - name: welcome
+        label: Welcome Message
+        type: text
+
+  - name: notices
+    label: School Notices
+    type: file
+    path: data/notices.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        label: Notice Title
+        type: string
+      - name: date
+        label: Date
+        type: date
+      - name: message
+        label: Notice
+        type: text
+      - name: active
+        label: Active
+        type: boolean
+
+  - name: staff
+    label: Staff Details
+    type: file
+    path: data/staff.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        label: Staff Name
+        type: string
+      - name: designation
+        label: Designation
+        type: string
+      - name: qualification
+        label: Qualification
+        type: string
+      - name: bio
+        label: Details
+        type: text
+      - name: photo
+        label: Photo
+        type: image
+
+  - name: timetable
+    label: Class Timetables
+    type: file
+    path: data/timetable.json
+    format: json
+    list: true
+    fields:
+      - name: class
+        label: Class
+        type: string
+      - name: day
+        label: Day
+        type: string
+      - name: start
+        label: Start Time
+        type: string
+      - name: end
+        label: End Time
+        type: string
+      - name: subject
+        label: Subject
+        type: string
+      - name: teacher
+        label: Teacher
+        type: string
