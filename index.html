@@ -609,7 +609,14 @@
 </section>
 
 <!-- ADMISSIONS -->
-<section id="admissions">
+<!-- SCHOOL NOTICES -->
+<section id="school-notices">
+  <div class="container">
+    <h2>School Notices</h2>
+    <div id="notices-list">Loading notices...</div>
+  </div>
+</section>
+    <section id="admissions">
     <div class="container">
         <div class="section-header">
             <div class="section-label">Admissions</div>
@@ -826,27 +833,45 @@
         });
     });
 </script>
-</body>
-</html>
 <script>
-async function loadSchoolData() {
+async function loadSchoolNotices() {
+  const container = document.getElementById("notices-list");
+
   try {
-    const base = "./data/";
+    const response = await fetch("./data/notices.json");
+    if (!response.ok) throw new Error("Notices could not be loaded");
 
-    const [school, notices, staff, timetable] = await Promise.all([
-      fetch(base + "school.json").then(r => r.json()),
-      fetch(base + "notices.json").then(r => r.json()),
-      fetch(base + "staff.json").then(r => r.json()),
-      fetch(base + "timetable.json").then(r => r.json())
-    ]);
+    const notices = await response.json();
+    const activeNotices = notices.filter(notice => notice.active);
 
-    console.log("School data loaded:", {
-      school, notices, staff, timetable
+    container.innerHTML = "";
+
+    if (activeNotices.length === 0) {
+      container.textContent = "No new notices at present.";
+      return;
+    }
+
+    activeNotices.forEach(notice => {
+      const item = document.createElement("div");
+      const heading = document.createElement("h3");
+      const date = document.createElement("p");
+      const message = document.createElement("p");
+
+      heading.textContent = notice.title;
+      date.textContent = notice.date || "";
+      message.textContent = notice.message || "";
+
+      item.append(heading, date, message);
+      container.appendChild(item);
     });
   } catch (error) {
-    console.error("Could not load school data:", error);
+    container.textContent = "Notices are temporarily unavailable.";
+    console.error(error);
   }
 }
 
-loadSchoolData();
+loadSchoolNotices();
 </script>
+
+</body>
+</html>
