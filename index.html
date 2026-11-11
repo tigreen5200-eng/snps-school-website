@@ -697,6 +697,22 @@ h3 { color: #6945a5; }
 .logo span {
     color: #b87912 !important;
 }
+/* STAFF PHOTO DESIGN */
+.staff-photo {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 5px solid #e9b949;
+    box-shadow: 0 8px 22px rgba(16, 38, 75, 0.2);
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.staff-card {
+    text-align: center;
+}
 </style>
 
 </head>
@@ -1171,14 +1187,19 @@ loadSchoolNotices();
     const staff = await response.json();
     const staffList = document.getElementById("staff-list");
 
-    staffList.innerHTML = staff.map(member => `
-      <div class="facility-card">
-        <h3>${member.name}</h3>
-        <p><strong>${member.designation}</strong></p>
-        ${member.qualification ? `<p>${member.qualification}</p>` : ""}
-        <p>${member.bio}</p>
-      </div>
-    `).join("");
+   staffList.innerHTML = staff.map(member => `
+  <div class="facility-card staff-card">
+    ${member.photo ? `
+      <img src="${member.photo.startsWith('/') ? '.' + member.photo : member.photo}"
+           alt="${member.name}"
+           class="staff-photo">
+    ` : ""}
+    <h3>${member.name}</h3>
+    <p><strong>${member.designation}</strong></p>
+    ${member.qualification ? `<p>${member.qualification}</p>` : ""}
+    <p>${member.bio}</p>
+  </div>
+`).join("");
   } catch (error) {
     console.error("Staff details:", error);
     document.getElementById("staff-list").textContent =
