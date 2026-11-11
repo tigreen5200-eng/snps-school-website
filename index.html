@@ -464,6 +464,116 @@
             .hero-buttons .btn { text-align: center; justify-content: center; }
         }
     </style>
+
+<style>
+/* SNPS PREMIUM DESIGN */
+:root {
+  --snps-navy: #10264b;
+  --snps-blue: #1769aa;
+  --snps-gold: #e9b949;
+  --snps-light: #f4f8fd;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #24344d;
+  background: #fff;
+}
+
+section {
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+h1, h2, h3 {
+  color: var(--snps-navy);
+  letter-spacing: -0.5px;
+}
+
+h1 {
+  text-shadow: 0 3px 18px rgba(16,38,75,.12);
+}
+
+.section-header {
+  margin-bottom: 35px;
+}
+
+.section-label {
+  color: #b88620;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.facility-card {
+  background: linear-gradient(145deg, #fff, #f2f7ff);
+  border: 1px solid #e4ecf6;
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(16,38,75,.07);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.facility-card:hover {
+  transform: translateY(-9px) scale(1.015);
+  box-shadow: 0 18px 35px rgba(16,38,75,.15);
+}
+
+.facilities-grid {
+  gap: 24px;
+}
+
+button, .btn, a.button {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+button:hover, .btn:hover, a.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(23,105,170,.2);
+}
+
+header, nav {
+  backdrop-filter: blur(12px);
+}
+
+section {
+  animation: snpsFadeIn .8s ease both;
+}
+
+@keyframes snpsFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 600px) {
+  section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .facility-card {
+    border-radius: 14px;
+  }
+}
+</style>
+
 </head>
 <body>
 
