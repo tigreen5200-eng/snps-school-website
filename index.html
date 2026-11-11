@@ -927,6 +927,31 @@ document.querySelectorAll(".topbar-item").forEach(element => {
 
 loadSchoolDetails();
 loadSchoolNotices();
+
+    async function loadStaff() {
+  try {
+    const response = await fetch("./data/staff.json");
+    if (!response.ok) throw new Error("Staff details could not be loaded");
+
+    const staff = await response.json();
+    const staffList = document.getElementById("staff-list");
+
+    staffList.innerHTML = staff.map(member => `
+      <div class="facility-card">
+        <h3>${member.name}</h3>
+        <p><strong>${member.designation}</strong></p>
+        ${member.qualification ? `<p>${member.qualification}</p>` : ""}
+        <p>${member.bio}</p>
+      </div>
+    `).join("");
+  } catch (error) {
+    console.error("Staff details:", error);
+    document.getElementById("staff-list").textContent =
+      "Staff details are temporarily unavailable.";
+  }
+}
+
+loadStaff();
 </script>
 
 </body>
