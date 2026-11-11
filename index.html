@@ -869,7 +869,33 @@ async function loadSchoolNotices() {
     console.error(error);
   }
 }
+async function loadSchoolDetails() {
+  try {
+    const response = await fetch("./data/school.json");
+    if (!response.ok) throw new Error("School details could not be loaded");
 
+    const school = await response.json();
+
+    document.querySelectorAll(".hero-badge").forEach(element => {
+      element.textContent = "★ Admissions Open " + school.session;
+    });
+
+    document.querySelectorAll("#admissions h2").forEach(element => {
+      element.textContent = "Admissions " + school.session + " Now Open";
+    });
+
+    document.querySelectorAll(".topbar").forEach(element => {
+      element.innerHTML = element.innerHTML
+        .replace("9419630397", school.phone.split(" / ")[0])
+        .replace("Standardnational98@gmail.com", school.email);
+    });
+
+  } catch (error) {
+    console.error("School details:", error);
+  }
+}
+
+loadSchoolDetails();
 loadSchoolNotices();
 </script>
 
