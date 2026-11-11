@@ -888,11 +888,23 @@ async function loadSchoolDetails() {
       element.textContent = "Admissions " + school.session + " Now Open";
     });
 
-    document.querySelectorAll(".topbar").forEach(element => {
-      element.innerHTML = element.innerHTML
-        .replace("9419630397", school.phone.split(" / ")[0])
-        .replace("Standardnational98@gmail.com", school.email);
-    });
+   document.querySelectorAll(".topbar a[href^='tel:']").forEach(element => {
+  const phone = school.phone.split(" / ")[0].trim();
+  element.href = "tel:+91" + phone;
+  element.textContent = "+91 " + phone;
+});
+
+document.querySelectorAll(".topbar a[href^='mailto:']").forEach(element => {
+  element.href = "mailto:" + school.email;
+  element.textContent = school.email;
+});
+
+document.querySelectorAll(".topbar-item").forEach(element => {
+  if (element.textContent.includes("Dursuma")) {
+    element.textContent = "📍 " + school.location;
+  }
+});
+
 
   } catch (error) {
     console.error("School details:", error);
