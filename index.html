@@ -572,6 +572,19 @@ section {
     border-radius: 14px;
   }
 }
+/* 3D SCHOOL LOGO EFFECT */
+.logo h1 {
+    text-shadow:
+        1px 1px 0 #c5d5e8,
+        2px 2px 0 #a9bfd9,
+        3px 3px 0 #8da8c9,
+        4px 5px 10px rgba(16, 38, 75, 0.25);
+    transition: transform 0.35s ease;
+}
+
+.logo:hover h1 {
+    transform: perspective(500px) rotateX(8deg) translateY(-3px);
+}
 </style>
 
 </head>
