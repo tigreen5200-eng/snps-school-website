@@ -875,7 +875,11 @@ async function loadSchoolDetails() {
     if (!response.ok) throw new Error("School details could not be loaded");
 
     const school = await response.json();
+    document.title = school.schoolName + " | " + school.location;
 
+    document.querySelectorAll(".logo-text h1").forEach(element => {
+      element.textContent = school.schoolName;
+    });
     document.querySelectorAll(".hero-badge").forEach(element => {
       element.textContent = "★ Admissions Open " + school.session;
     });
