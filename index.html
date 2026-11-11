@@ -714,6 +714,79 @@ h3 { color: #6945a5; }
 .staff-card {
     text-align: center;
 }
+
+/* SNPS ADMISSION ENQUIRY FORM */
+.admission-enquiry {
+    max-width: 700px;
+    margin: 45px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #ffffff, #eaf3ff);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(20, 43, 89, 0.15);
+}
+
+.admission-enquiry h2 {
+    color: #173c78;
+    text-align: center;
+}
+
+.admission-enquiry label {
+    display: block;
+    margin: 15px 0 7px;
+    font-weight: 700;
+    color: #173c78;
+}
+
+.admission-enquiry input,
+.admission-enquiry select,
+.admission-enquiry textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #cbd9ed;
+    border-radius: 9px;
+    font-size: 15px;
+    box-sizing: border-box;
+    background: #ffffff;
+}
+
+.admission-enquiry textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.admission-enquiry button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #2878d0, #6945b5);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* FOOTER SCHOOL NAME VISIBILITY */
+footer h1,
+footer h2,
+footer .logo h1,
+footer .logo a,
+footer a {
+    color: #ffffff !important;
+    text-shadow: 1px 2px 4px rgba(0,0,0,0.35);
+}
+
+footer {
+    background: #142b59 !important;
+}
+
+footer h1,
+footer h2 {
+    font-weight: 900 !important;
+}
+
 </style>
 
 </head>
@@ -875,7 +948,7 @@ Jammu & Kashmir – 191201, India — Jammu &amp; Kashmir</p>
     <div class="container">
         <div class="section-header">
             <div class="section-label">Admissions</div>
-            <h2>Admissions 2025-26 Now Open</h2>
+            <h2>Admissions 2026-2027 Now Open</h2>
             <p>Join the SNPS family! Follow our simple admission process to give your child the best start in their educational journey.</p>
         </div>
         <div class="admissions-wrapper">
@@ -917,10 +990,58 @@ Jammu & Kashmir – 191201, India, J&amp;K, India</p>
                 </div>
             </div>
         </div>
+   
+    <!-- ADMISSION ENQUIRY FORM -->
+    <div class="admission-enquiry facility-card">
+        <h2>Admission Enquiry Form</h2>
+        <p>Submit your details and our school team will contact you.</p>
+
+        <form action="https://formsubmit.co/Standardnational98@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New SNPS Admission Enquiry">
+            <input type="hidden" name="_captcha" value="false">
+
+            <label>Parent's Name</label>
+            <input type="text" name="ParentName" required placeholder="Enter parent's name">
+
+            <label>Student's Name</label>
+            <input type="text" name="StudentName" required placeholder="Enter student's name">
+
+            <label>Admission Class</label>
+            <select name="AdmissionClass" required>
+                <option value="">Select Class</option>
+                <option>Nursery</option>
+                <option>LKG</option>
+                <option>UKG</option>
+                <option>Class 1</option>
+                <option>Class 2</option>
+                <option>Class 3</option>
+                <option>Class 4</option>
+                <option>Class 5</option>
+                <option>Class 6</option>
+                <option>Class 7</option>
+                <option>Class 8</option>
+                <option>Class 9</option>
+                <option>Class 10</option>
+                <option>Class 11</option>
+                <option>Class 12</option>
+            </select>
+
+            <label>Mobile Number</label>
+            <input type="tel" name="MobileNumber" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number">
+
+            <label>Additional Questions</label>
+            <textarea name="AdditionalQuestions" placeholder="Any questions for the school?"></textarea>
+
+            <button type="submit">Submit Admission Enquiry</button>
+        </form>
     </div>
+    <!-- END ADMISSION ENQUIRY FORM -->
+
+</div>
 </section>
 
 <!-- OUR STAFF -->
+
 <section id="staff">
     <div class="container">
         <div class="section-header">
