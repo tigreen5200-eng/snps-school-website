@@ -136,6 +136,113 @@ Jammu & Kashmir – 191201, India J&K</title>
     overflow: hidden;
     isolation: isolate;
 }
+        
+/* ─── SELF-GENERATED 3D HERO ANIMATION ─── */
+
+.hero-3d-scene {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    perspective: 1000px;
+}
+
+.hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+    transform-style: preserve-3d;
+    animation: orbFloat 9s ease-in-out infinite;
+}
+
+.orb-one {
+    width: 190px;
+    height: 190px;
+    top: 12%;
+    right: 9%;
+    background: radial-gradient(
+        circle at 30% 30%,
+        #fff2c4,
+        #d5a84f 35%,
+        #8b5b16 70%,
+        transparent 75%
+    );
+    box-shadow: 0 0 65px rgba(213,168,79,.45);
+}
+
+.orb-two {
+    width: 100px;
+    height: 100px;
+    bottom: 12%;
+    right: 27%;
+    background: radial-gradient(
+        circle at 30% 30%,
+        #b9e4ff,
+        #367dbb 55%,
+        #102b50
+    );
+    box-shadow: 0 0 55px rgba(65,145,220,.5);
+    animation-delay: -4s;
+}
+
+.hero-ring {
+    position: absolute;
+    border: 2px solid rgba(213,168,79,.45);
+    border-radius: 50%;
+    transform-style: preserve-3d;
+    animation: ringRotate 12s linear infinite;
+}
+
+.ring-one {
+    width: 260px;
+    height: 100px;
+    top: 23%;
+    right: 5%;
+    transform: rotate(-30deg);
+}
+
+.ring-two {
+    width: 220px;
+    height: 80px;
+    top: 28%;
+    right: 7%;
+    border-color: rgba(110,190,255,.4);
+    animation-direction: reverse;
+}
+
+.hero-light {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    right: 5%;
+    background: radial-gradient(
+        circle,
+        rgba(213,168,79,.16),
+        transparent 70%
+    );
+    animation: lightPulse 5s ease-in-out infinite;
+}
+
+@keyframes orbFloat {
+    0%, 100% {
+        transform: translate3d(0,0,0) rotateY(0deg);
+    }
+    50% {
+        transform: translate3d(-25px,-35px,50px) rotateY(35deg);
+    }
+}
+
+@keyframes ringRotate {
+    from { rotate: 0deg; }
+    to { rotate: 360deg; }
+}
+
+@keyframes lightPulse {
+    0%, 100% { opacity: .4; scale: .85; }
+    50% { opacity: 1; scale: 1.2; }
+}
+
 
 .hero::before {
     content: '';
