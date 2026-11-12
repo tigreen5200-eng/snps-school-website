@@ -1373,13 +1373,14 @@ loadSchoolNotices();
   }
 }
 
+
 // CLASS-WISE TIMETABLE
 const timetableSelect = document.getElementById("class-timetable");
 const timetableDisplay = document.getElementById("timetable-display");
 
 if (timetableSelect && timetableDisplay) {
-  timetableSelect.addEventListener("change", async function () {
-    const selectedClass = this.value;
+  async function loadClassTimetable() {
+    const selectedClass = timetableSelect.value;
 
     if (!selectedClass) {
       timetableDisplay.textContent = "Please select your class to view the timetable.";
@@ -1389,49 +1390,58 @@ if (timetableSelect && timetableDisplay) {
     timetableDisplay.textContent = "Loading timetable...";
 
     try {
-      const response = await fetch("./data/timetables.json");
+      const response = await fetch("./data/timetable.json");
       if (!response.ok) throw new Error("Timetable file not found");
 
-      const timetables = await response.json();
-      const timetable = timetables[selectedClass];
+      const records = await response.json();
 
-      if (!timetable || Object.keys(timetable).length === 0) {
+      const classRecords = records.filter(record =>
+        record.class.toLowerCase().replace(/\s+/g, "") ===
+        selectedClass.toLowerCase().replace(/\s+/g, "")
+      );
+
+      if (classRecords.length === 0) {
         timetableDisplay.textContent =
           "The timetable for this class will be published soon.";
         return;
       }
 
-      let html = "<h3>" + this.options[this.selectedIndex].text + " Timetable</h3>";
-      html += "<table style='width:100%;border-collapse:collapse;text-align:center;'>";
-      html += "<tr><th style='padding:10px;border:1px solid #ccc;'>Day</th>";
+      classRecords.sort((a, b) => a.start.localeCompare(b.start));
 
-      const periods = Math.max(...Object.values(timetable).map(day => day.length));
+      let html = "<h3>" +
+        timetableSelect.options[timetableSelect.selectedIndex].text +
+        " Timetable</h3>";
 
-      for (let i = 1; i <= periods; i++) {
-        html += "<th style='padding:10px;border:1px solid #ccc;'>Period " + i + "</th>";
-      }
-
+      html += "<div style='overflow-x:auto;'>";
+      html += "<table style='width:100%;border-collapse:collapse;text-align:left;'>";
+      html += "<tr>";
+      html += "<th style='padding:10px;border:1px solid #ccc;'>Day</th>";
+      html += "<th style='padding:10px;border:1px solid #ccc;'>Time</th>";
+      html += "<th style='padding:10px;border:1px solid #ccc;'>Subject</th>";
+      html += "<th style='padding:10px;border:1px solid #ccc;'>Teacher</th>";
       html += "</tr>";
 
-      for (const [day, subjects] of Object.entries(timetable)) {
-        html += "<tr><td style='padding:10px;border:1px solid #ccc;'><strong>" + day + "</strong></td>";
-
-        for (let i = 0; i < periods; i++) {
-          html += "<td style='padding:10px;border:1px solid #ccc;'>" + (subjects[i] || "-") + "</td>";
-        }
-
+      for (const record of classRecords) {
+        html += "<tr>";
+        html += "<td style='padding:10px;border:1px solid #ccc;'>" + record.day + "</td>";
+        html += "<td style='padding:10px;border:1px solid #ccc;'>" + record.start + " - " + record.end + "</td>";
+        html += "<td style='padding:10px;border:1px solid #ccc;'>" + record.subject + "</td>";
+        html += "<td style='padding:10px;border:1px solid #ccc;'>" + record.teacher + "</td>";
         html += "</tr>";
       }
 
-      html += "</table>";
+      html += "</table></div>";
       timetableDisplay.innerHTML = html;
 
     } catch (error) {
       timetableDisplay.textContent =
         "Timetable is being prepared. Please check again later.";
     }
-  });
+  }
+
+  timetableSelect.addEventListener("change", loadClassTimetable);
 }
+
     loadStaff();
 </script>
 
