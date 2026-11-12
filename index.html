@@ -246,13 +246,36 @@ Jammu & Kashmir – 191201, India J&K</title>
     background: rgba(255,255,255,0.12);
     transform: translateY(-3px);
 }
-
+    
 .hero-stats {
     display: flex;
     gap: 40px;
     margin-top: 50px;
     padding-top: 30px;
     border-top: 1px solid rgba(255,255,255,0.18);
+}
+
+/* ─── 3D FLOATING STAT CARDS ─── */
+.hero-stats .stat {
+    padding: 16px 20px;
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.13),
+        rgba(255,255,255,0.035)
+    );
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 16px;
+    box-shadow:
+        0 12px 25px rgba(0,0,0,0.25),
+        inset 0 1px 1px rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    transform: perspective(700px) rotateX(4deg);
+    transition: all 0.35s ease;
+}
+
+.hero-stats .stat:hover {
+    transform: perspective(700px) rotateX(0deg) translateY(-7px);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.3);
 }
 
 .stat h3 {
