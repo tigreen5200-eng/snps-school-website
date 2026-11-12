@@ -829,6 +829,117 @@ button:hover,
 .gallery-item:hover img {
     transform: scale(1.04);
 }
+  
+/* ─── SNPS RESULTS & EXAMINATIONS – 3D DESIGN ─── */
+
+.results-section {
+    position: relative;
+    overflow: hidden;
+    padding: 85px 0;
+    background:
+        radial-gradient(ellipse at 10% 10%, rgba(213,168,79,.13), transparent 35%),
+        linear-gradient(135deg, #07172e, #102b50 55%, #081a35);
+    color: #fff;
+}
+
+.results-section .section-header h2 {
+    color: #fff;
+}
+
+.results-section .section-header p {
+    color: #d5dfed;
+}
+
+.results-section .section-label {
+    color: #e2bd70;
+    letter-spacing: 3px;
+    font-weight: 800;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    margin-top: 45px;
+    perspective: 1000px;
+}
+
+.result-card {
+    position: relative;
+    padding: 35px 27px;
+    min-height: 270px;
+    border: 1px solid rgba(232, 195, 119, .45);
+    border-radius: 20px;
+    background: linear-gradient(145deg,
+        rgba(255,255,255,.13),
+        rgba(255,255,255,.035));
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.32),
+        inset 0 1px 1px rgba(255,255,255,.18);
+    transform-style: preserve-3d;
+    transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-12px) rotateX(5deg) rotateY(-5deg);
+    box-shadow:
+        0 28px 45px rgba(0,0,0,.45),
+        0 0 25px rgba(213,168,79,.18);
+}
+
+.result-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    margin-bottom: 24px;
+    border-radius: 16px;
+    color: #102544;
+    font-size: 27px;
+    background: linear-gradient(135deg, #fff0bd, #c18b32);
+    box-shadow: 0 9px 18px rgba(0,0,0,.3);
+}
+
+.result-card h3 {
+    color: #ffe5a6;
+    font-size: 20px;
+    margin-bottom: 13px;
+}
+
+.result-card p {
+    color: #d5dfed;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.result-status {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 8px 14px;
+    border: 1px solid rgba(232,195,119,.45);
+    border-radius: 30px;
+    color: #ffe5a6;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    background: rgba(213,168,79,.1);
+}
+
+@media (max-width: 768px) {
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .results-section {
+        padding: 60px 0;
+    }
+
+    .result-card {
+        min-height: auto;
+    }
+}
+
     </style>
 
 <style>
@@ -1552,7 +1663,58 @@ Jammu & Kashmir – 191201, India, J&amp;K, India</p>
         </div>
     </div>
 </section>
-   
+    <!-- RESULTS & EXAMINATIONS -->
+<section class="results-section" id="results">
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">ACADEMIC PERFORMANCE</div>
+            <h2>Results & Examinations</h2>
+            <p>
+                Stay informed about examination schedules,
+                important updates and student results at
+                Standard National Public School.
+            </p>
+        </div>
+
+        <div class="results-grid">
+
+            <div class="result-card">
+                <div class="result-icon">✦</div>
+                <h3>Examination Schedule</h3>
+                <p>
+                    Information about upcoming examinations,
+                    assessment dates and academic schedules.
+                </p>
+                <span class="result-status">Exam Updates</span>
+            </div>
+
+            <div class="result-card">
+                <div class="result-icon">★</div>
+                <h3>Student Results</h3>
+                <p>
+                    Stay updated with class-wise examination
+                    results and academic performance announcements.
+                </p>
+                <span class="result-status">Result Updates</span>
+            </div>
+
+            <div class="result-card">
+                <div class="result-icon">◆</div>
+                <h3>Important Instructions</h3>
+                <p>
+                    Find important examination guidelines,
+                    reporting instructions and result information.
+                </p>
+                <span class="result-status">School Notices</span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
 <!-- FACILITIES -->
 <section class="bg-light" id="facilities">
     <div class="container">
